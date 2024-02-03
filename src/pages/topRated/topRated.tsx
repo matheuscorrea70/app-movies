@@ -29,7 +29,7 @@ const TopRated = () => {
 
   return (
     <section className="mt-8">
-      <h1 className="font-bold py-4">Top Rated</h1>
+      <h1 className="font-bold py-4 text-center">Top Rated</h1>
       <div className="flex flex-wrap justify-center gap-4 items-stretch">
         {data?.pages.map(page =>
           page.results.map((movie, index) => {

@@ -18,7 +18,7 @@ const MovieCard = forwardRef(
   ) => {
     return (
       <div
-        className="text-sm flex items-center flex-col mt-4 grow-0 max-w-full sm:max-w-72 transform transition duration-500 hover:scale-150 hover:z-10 bg-gray-900 rounded-lg pb-4"
+        className="text-sm flex items-center flex-col mt-4 grow-0 max-w-full sm:max-w-72 transform transition duration-500 hover:scale-150 z-10 hover:z-30 bg-gray-900 rounded-lg pb-4"
         ref={ref}>
         <div className="inline-block w-72 h-44">
           <img
