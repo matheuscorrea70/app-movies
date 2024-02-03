@@ -5,8 +5,7 @@ import {
 } from './hooks/useTopRatedInfiniteQuery'
 import { useRef } from 'react'
 import Loader from 'common/components/loader'
-import { formatNumber } from 'common/helpers/number'
-import StarIcon from 'common/assets/icons/star.svg?react'
+import MovieCard from 'common/components/movieCard'
 
 const TopRated = () => {
   const observer = useRef<IntersectionObserver>()
@@ -34,33 +33,21 @@ const TopRated = () => {
       <div className="flex flex-wrap justify-center gap-4 items-stretch">
         {data?.pages.map(page =>
           page.results.map((movie, index) => {
-            position++
-
             return (
-              <div
-                className="flex items-center flex-col mt-4 grow-0 max-w-full sm:max-w-72 transform transition duration-500 hover:scale-150 hover:z-10 bg-gray-900 rounded-lg pb-4"
+              <MovieCard
                 key={movie.id}
+                picturePath={movie.backdrop_path}
+                position={++position}
+                title={movie.title}
+                releaseDate={new Date(movie.release_date)}
+                voteAverage={movie.vote_average}
+                voteCount={movie.vote_count}
                 ref={
                   page.results.length === index + ADDITIONAL_FOR_PENULTIMATE_POSITION && !isError
                     ? penultimateElementRef
                     : undefined
-                }>
-                <div className="inline-block w-72 h-44">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
-                    className="rounded-lg w-full"
-                  />
-                </div>
-
-                <h2 className="text-center font-bold">
-                  {position} - {movie.title} - {new Date(movie.release_date).getFullYear()}
-                </h2>
-                <div className="text-center flex justify-center gap-1 items-center text-sm">
-                  <StarIcon className="w-4 fill-yellow-400" />
-                  <span>{movie.vote_average.toFixed(1)}</span>
-                  <span className="text-gray-400">({formatNumber(movie.vote_count)})</span>
-                </div>
-              </div>
+                }
+              />
             )
           })
         )}
