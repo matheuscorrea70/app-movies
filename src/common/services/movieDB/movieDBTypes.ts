@@ -17,4 +17,9 @@ export type Movie = {
   vote_count: number
 }
 
-export type MovieList = Movie[]
+export type TopRatedResponse = {
+  page: number
+  results: Movie[]
+  total_pages: number
+  total_results: number
+}

@@ -6,7 +6,9 @@ export default defineConfig({
   plugins: [svgr(), react()],
   resolve: {
     alias: {
-      app: '/src/app'
+      app: '/src/app',
+      common: '/src/common',
+      pages: '/src/pages'
     }
   }
 })

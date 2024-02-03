@@ -1,13 +1,15 @@
 import axios from 'axios'
 import { MovieDBEndpoints } from './movieDBEndpoints'
-import { Language } from 'src/common/types/language'
-import { MovieList } from './movieDBTypes'
+import { Language } from 'common/types/language'
+import { TopRatedResponse } from './movieDBTypes'
 
 class MovieDBService {
   static getTopRatedList = async (page = 1) => {
-    return axios.get<MovieList>(MovieDBEndpoints.topRatedList(), {
+    const { data } = await axios.get<TopRatedResponse>(MovieDBEndpoints.topRatedList(), {
       params: { language: Language.English, page }
     })
+
+    return data
   }
 }
 
