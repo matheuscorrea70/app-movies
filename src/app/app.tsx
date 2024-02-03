@@ -11,7 +11,11 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TopRated />
+      <div className='flex justify-center text-gray-200'>
+        <div className="px-4 max-w-screen-2xl">
+          <TopRated />
+        </div>
+      </div>
     </QueryClientProvider>
   )
 }

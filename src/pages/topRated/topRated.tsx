@@ -5,6 +5,8 @@ import {
 } from './hooks/useTopRatedInfiniteQuery'
 import { useRef } from 'react'
 import Loader from 'common/components/loader'
+import { formatNumber } from 'common/helpers/number'
+import StarIcon from 'common/assets/icons/star.svg?react'
 
 const TopRated = () => {
   const observer = useRef<IntersectionObserver>()
@@ -24,31 +26,43 @@ const TopRated = () => {
     return <Loader />
   }
 
+  let position = 0
+
   return (
-    <section>
-      <h1>Top Rated</h1>
-      <ul>
-        {data?.pages.map(page => (
-          <div>
-            {page.results.map((movie, index) => (
-              <li>
-                <div
-                  className="mt-4"
-                  key={movie.id}
-                  ref={
-                    page.results.length === index + ADDITIONAL_FOR_PENULTIMATE_POSITION && !isError
-                      ? penultimateElementRef
-                      : undefined
-                  }>
-                  <h2>{movie.title}</h2>
-                  <p>{movie.overview}</p>
+    <section className="">
+      <h1 className="text-center">Top Rated</h1>
+      <div className="flex flex-wrap justify-center gap-8 items-stretch">
+        {data?.pages.map(page =>
+          page.results.map((movie, index) => {
+            position++
+
+            return (
+              <div
+                className="mt-4 grow-0 max-w-96 md:max-w-80 xl:max-w-96"
+                key={movie.id}
+                ref={
+                  page.results.length === index + ADDITIONAL_FOR_PENULTIMATE_POSITION && !isError
+                    ? penultimateElementRef
+                    : undefined
+                }>
+                <img
+                  src={`https://image.tmdb.org/t/p/w400/${movie.backdrop_path}`}
+                  className="rounded-lg"
+                />
+                <h2 className="text-center font-bold mt-2">
+                  {position} - {movie.title} - {new Date(movie.release_date).getFullYear()}
+                </h2>
+                <div className="text-center flex justify-center gap-1 items-center text-sm">
+                  <StarIcon className="w-4 fill-yellow-400" />
+                  <span>{movie.vote_average.toFixed(1)}</span>
+                  <span className="text-gray-400">({formatNumber(movie.vote_count)})</span>
                 </div>
-              </li>
-            ))}
-          </div>
-        ))}
+              </div>
+            )
+          })
+        )}
         {isFetching && <Loader />}
-      </ul>
+      </div>
     </section>
   )
 }
