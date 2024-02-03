@@ -29,27 +29,30 @@ const TopRated = () => {
   let position = 0
 
   return (
-    <section className="">
-      <h1 className="text-center">Top Rated</h1>
-      <div className="flex flex-wrap justify-center gap-8 items-stretch">
+    <section className="mt-8">
+      <h1 className="font-bold py-4">Top Rated</h1>
+      <div className="flex flex-wrap justify-center gap-4 items-stretch">
         {data?.pages.map(page =>
           page.results.map((movie, index) => {
             position++
 
             return (
               <div
-                className="mt-4 grow-0 max-w-96 md:max-w-80 xl:max-w-96"
+                className="flex items-center flex-col mt-4 grow-0 max-w-full sm:max-w-72 transform transition duration-500 hover:scale-150 hover:z-10 bg-gray-900 rounded-lg pb-4"
                 key={movie.id}
                 ref={
                   page.results.length === index + ADDITIONAL_FOR_PENULTIMATE_POSITION && !isError
                     ? penultimateElementRef
                     : undefined
                 }>
-                <img
-                  src={`https://image.tmdb.org/t/p/w400/${movie.backdrop_path}`}
-                  className="rounded-lg"
-                />
-                <h2 className="text-center font-bold mt-2">
+                <div className="inline-block w-72 h-44">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
+                    className="rounded-lg w-full"
+                  />
+                </div>
+
+                <h2 className="text-center font-bold">
                   {position} - {movie.title} - {new Date(movie.release_date).getFullYear()}
                 </h2>
                 <div className="text-center flex justify-center gap-1 items-center text-sm">
