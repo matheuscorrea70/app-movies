@@ -28,7 +28,7 @@ const TopRated = () => {
   let position = 0
 
   return (
-    <section className="mt-8">
+    <section>
       <h1 className="font-bold py-4 text-center">Top Rated</h1>
       <div className="flex flex-wrap justify-center gap-4 items-stretch">
         {data?.pages.map(page =>
@@ -36,6 +36,7 @@ const TopRated = () => {
             return (
               <MovieCard
                 key={movie.id}
+                id={movie.id}
                 picturePath={movie.backdrop_path}
                 position={++position}
                 title={movie.title}

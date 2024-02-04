@@ -8,6 +8,7 @@ export default defineConfig({
     alias: {
       app: '/src/app',
       common: '/src/common',
+      config: '/src/config',
       pages: '/src/pages'
     }
   }
