@@ -7,10 +7,10 @@ const MovieReviews = () => {
     useMovieReviewInfiniteQuery()
 
   if (isLoading) {
-    return <Loader />
+    return <Loader full />
   }
 
-  if (isError || !data || !data.pages.length) {
+  if (isError || !data || !data.pages?.[0].results.length) {
     return null
   }
 
@@ -40,7 +40,7 @@ const MovieReviews = () => {
         )}
       </ul>
       {isFetching ? (
-        <Loader />
+        <Loader full />
       ) : (
         hasNextPage && (
           <div className="flex justify-center mt-4">
