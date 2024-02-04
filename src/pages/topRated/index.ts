@@ -1,1 +1,1 @@
-export { default } from './topRatedPage'
+export { default as Component } from './topRatedPage'

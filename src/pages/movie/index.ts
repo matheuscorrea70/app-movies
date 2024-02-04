@@ -1,1 +1,1 @@
-export { default } from './moviePage'
+export { default as Component } from './moviePage'

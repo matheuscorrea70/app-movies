@@ -1,6 +1,4 @@
 import ErrorPage from 'pages/error'
-import MoviePage from 'pages/movie'
-import TopRatedPage from 'pages/topRated'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { RoutePath } from './types'
 import Root from './components/root'
@@ -11,10 +9,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <TopRatedPage />,  },
+      { index: true, lazy: () => import('pages/topRated'),  },
       {
         path: RoutePath.MOVIE,
-        element: <MoviePage />
+        lazy: () => import('pages/movie')
       }
     ]
   }

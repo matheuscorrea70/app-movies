@@ -31,7 +31,7 @@ const MovieCard = forwardRef(
     return (
       <Link to={RoutePath.MOVIE.replace(':movieId', id.toString())}>
         <div
-          className="text-sm flex items-center flex-col mt-4 transform transition duration-500 hover:scale-150 hover:relative  hover:z-30 bg-gray-900 rounded-lg pb-4"
+          className="text-sm flex items-center flex-col mt-4 transform transition duration-500 lg:hover:scale-150 lg:hover:relative lg:hover:z-30 bg-gray-900 rounded-lg pb-4"
           ref={ref}>
           <div className={`${STYLE_BY_SIZE[size].movieContainer} flex justify-between flex-col w4`}>
               <MovieBackdrop
