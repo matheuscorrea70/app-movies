@@ -6,7 +6,7 @@ import MovieReviews from './components/reviews'
 import MovieBackdrop from 'common/components/movieBackdrop'
 import MovieRecommendations from './components/recommendations'
 
-const Movie = () => {
+const MoviePage = () => {
   const movieQuery = useMovieQuery()
 
   if (movieQuery.isLoading) {
@@ -45,4 +45,4 @@ const Movie = () => {
   )
 }
 
-export default Movie
+export default MoviePage

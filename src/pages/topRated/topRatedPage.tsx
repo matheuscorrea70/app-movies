@@ -8,7 +8,7 @@ import Loader from 'common/components/loader'
 import MovieCard from 'common/components/movieCard'
 import Rating from 'common/components/rating'
 
-const TopRated = () => {
+const TopRatedPage = () => {
   const observer = useRef<IntersectionObserver>()
 
   const { data, isFetching, isError, isLoading, hasNextPage, fetchNextPage } =
@@ -57,4 +57,4 @@ const TopRated = () => {
   )
 }
 
-export default TopRated
+export default TopRatedPage
