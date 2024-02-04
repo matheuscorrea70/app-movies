@@ -6,6 +6,7 @@ import {
 import { useRef } from 'react'
 import Loader from 'common/components/loader'
 import MovieCard from 'common/components/movieCard'
+import Rating from 'common/components/rating'
 
 const TopRated = () => {
   const observer = useRef<IntersectionObserver>()
@@ -38,17 +39,15 @@ const TopRated = () => {
                 key={movie.id}
                 id={movie.id}
                 picturePath={movie.backdrop_path}
-                position={++position}
-                title={movie.title}
+                title={`${++position}. ${movie.title}`}
                 releaseDate={new Date(movie.release_date)}
-                voteAverage={movie.vote_average}
-                voteCount={movie.vote_count}
                 ref={
                   page.results.length === index + ADDITIONAL_FOR_PENULTIMATE_POSITION && !isError
                     ? penultimateElementRef
                     : undefined
-                }
-              />
+                }>
+                <Rating voteAverage={movie.vote_average} voteCount={movie.vote_count} />
+              </MovieCard>
             )
           })
         )}

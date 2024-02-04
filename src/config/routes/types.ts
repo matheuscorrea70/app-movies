@@ -1,4 +1,4 @@
 export enum RoutePath {
   ROOT = '/',
-  MOVIE = 'movie/:id'
+  MOVIE = '/movie/:movieId'
 }

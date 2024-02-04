@@ -1,3 +1,8 @@
 export enum MovieDBEndpointKeys {
-  TopRatedList = 'topRatedList'
+  GetTopRatedList = 'getTopRatedList',
+  GetMovieById = 'getMovieById',
+  GetMovieImages = 'getMovieImages',
+  GetMovieCredits = 'getMovieCredits',
+  GetMovieRecommendations = 'getMovieRecommendations',
+  GetMovieReviews = 'getMovieReviews'
 }

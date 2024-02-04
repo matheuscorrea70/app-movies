@@ -7,7 +7,7 @@ export const ADDITIONAL_FOR_PENULTIMATE_POSITION = 2
 
 export const useTopRatedInfiniteQuery = () => {
   return useInfiniteQuery({
-    queryKey: [MovieDBEndpointKeys.TopRatedList],
+    queryKey: [MovieDBEndpointKeys.GetTopRatedList],
     queryFn: ({ pageParam }) => MovieDBService.getTopRatedList(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage: TopRatedResponse) =>
