@@ -51,8 +51,8 @@ const TopRatedPage = () => {
             )
           })
         )}
-        {isFetching && <Loader />}
       </div>
+      {isFetching && <Loader full />}
     </section>
   )
 }
